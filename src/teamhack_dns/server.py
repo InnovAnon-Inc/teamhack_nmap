@@ -51,7 +51,7 @@ def handle_dns_query(conn, data):
     return reply.pack()
 
 # Function to start the DNS server and listen for requests
-def start_dns_server(conn):
+def start_server(conn):
     host = ''
     port = 53
 
