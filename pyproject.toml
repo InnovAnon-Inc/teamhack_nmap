@@ -10,6 +10,7 @@ dependencies = [
   #"json",
   "psycopg2",
   #"socket",
+  "teamhack_db",
 ]
 
 [project.optional-dependencies]
