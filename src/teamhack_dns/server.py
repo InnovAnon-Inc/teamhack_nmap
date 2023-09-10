@@ -1,4 +1,4 @@
-from socket          import socket AF_INET, SOCK_DGRAM
+from socket          import socket, AF_INET, SOCK_DGRAM
 from dnslib          import *
 from teamhack_db.sql import select_hostname_recordtype
 
