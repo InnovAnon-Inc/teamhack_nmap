@@ -20,5 +20,4 @@ services:
         condition: service_healthy
       syslog:
         condition: service_started
-      #  condition:   service_healthy
 
