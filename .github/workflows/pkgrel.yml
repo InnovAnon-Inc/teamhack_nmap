@@ -146,6 +146,7 @@ jobs:
     - name: Deploy Docker Image
       run: |
         docker push     "innovanon/teamhack_dns:$TEAMHACK_VERSION"
+        docker push      innovanon/teamhack_dns
       env:
         TEAMHACK_VERSION: ${{ steps.tag_version.outputs.new_tag }}
 
