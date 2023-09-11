@@ -1,8 +1,8 @@
 version: '3.8'
 services:
   teamhack_dns:
-    image: innovanon/teamhack-dns
-    container_name:  teamhack-dns
+    image: innovanon/teamhack_dns
+    container_name:  teamhack_dns
     ports:
       - "0.0.0.0:53:53/udp"
     volumes:
