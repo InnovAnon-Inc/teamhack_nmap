@@ -15,3 +15,5 @@ ENTRYPOINT [         \
   "teamhack_dns",    \
 ]
 
+EXPOSE 53/udp
+
