@@ -12,7 +12,7 @@ RUN pip install teamhack_dns
 ENTRYPOINT [         \
   "/usr/bin/python", \
   "-m",              \
-  "teamhack_dns",    \
+  "teamhack_dns"     \
 ]
 
 EXPOSE 53/udp
