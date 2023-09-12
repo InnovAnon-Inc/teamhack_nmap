@@ -6,6 +6,7 @@ services:
     ports:
       - "0.0.0.0:53:53/udp"
     volumes:
+      - teamhack-dns:/var/teamhack/etc:ro
       - syslog-client:/etc/rsyslog.d:ro
     restart:         always
     #network_mode:    service:vpn-s1
@@ -14,9 +15,13 @@ services:
     #  interval:      1m
     #  timeout:       3s
     #  retries:       10
+    # TODO
     depends_on:
       postgres:
         condition: service_healthy
       syslog:
         condition: service_started
+
+volumes:
+  teamhack-dns: # /database.ini
 

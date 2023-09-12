@@ -9,6 +9,9 @@ FROM python:latest
 #  /tmp/dist/
 RUN pip install teamhack_dns
 
+WORKDIR  /var/teamhack
+VOLUME ["/var/teamhack"]
+
 ENTRYPOINT [         \
   "/usr/bin/env",    \
   "python",          \
