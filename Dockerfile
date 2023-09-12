@@ -10,7 +10,8 @@ FROM python:latest
 RUN pip install teamhack_dns
 
 ENTRYPOINT [         \
-  "/usr/bin/python", \
+  "/usr/bin/env",    \
+  "python",          \
   "-m",              \
   "teamhack_dns"     \
 ]
