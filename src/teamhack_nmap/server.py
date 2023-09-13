@@ -17,6 +17,7 @@ def create_app():
     file = NamedTemporaryFile()
     try:
       file.write(request.get_data())
+      file.flush()
       return portscan_daemon(file), 200
     finally:
       file.close()
