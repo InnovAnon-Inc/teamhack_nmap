@@ -8,7 +8,7 @@ def portscan_daemon(hosts):
   # /usr/bin/env
   #p = run(['nmap', '-A', '-sV', '--script=vulners/vulners.nse', '-p-', '-iL', '-', '-oX', '-'], stdin=file, stdout=PIPE)
   #p = run(['nmap', '-A', '-sV', '--script=vulners/vulners.nse', '-p-', '-iL', '-', '-oX', '-'], stdin=hosts.decode(), stdout=PIPE)
-  p = check_output(['nmap', '-A', '-sV', '--script=vulners/vulners.nse', '-p-', '-iL', '-', '-oX', '-'], input=hosts.decode())
+  p = check_output(['nmap', '-A', '-sV', '--script=vulners/vulners.nse', '-p-', '-iL', '-', '-oX', '-'], input=hosts)
   #p.check_returncode()
   #return p.stdout
   return p
