@@ -60,7 +60,8 @@ RUN apt update                     \
 &&  apt install      -y            \
     --no-install-recommends        \
     git                            \
-    metasploit-framework           \
+    nmap                           \
+    python-pip                     \
     xinetd                         \
 &&  apt autoremove   -y            \
     --purge                        \
@@ -80,12 +81,18 @@ RUN test -d /usr/share/nmap/scripts                \
     https://github.com/danielmiessler/SecLists.git \
     /usr/share/seclists
 
-RUN adduser --system msf-user
+RUN pip install teamhack_nmap
 
-# /etc/xinetd.d/xinetd
-VOLUME ["/etc/xinetd.d"]
+#RUN adduser --system msf-user
 
-EXPOSE 6616/tcp
+ENTRYPOINT [         \
+  "/usr/bin/env",    \
+  "python",          \
+  "-m",              \
+  "teamhack_nmap"     \
+]
+
+EXPOSE 55432/tcp
 
 #HEALTHCHECK --interval=5m          \
 #            --timeout=3s           \
