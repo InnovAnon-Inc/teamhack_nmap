@@ -1,6 +1,7 @@
 from tempfile import NamedTemporaryFile
 from flask import Flask, request
 from subprocess import run, PIPE
+from os import unlink
 
 def portscan_daemon(file):
   p = run(['nmap', '-A', '-sV', '--script=vulners/vulners.nse -p- -iL - -oX -'], stdin=file, stdout=PIPE)
@@ -18,7 +19,7 @@ def create_app():
       return portscan_daemon(file), 200
     finally:
       file.close()
-      os.unlink(file.name)
+      unlink(file.name)
 
   return app
 
