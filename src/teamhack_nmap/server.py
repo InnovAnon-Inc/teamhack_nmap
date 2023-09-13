@@ -2,7 +2,7 @@ from tempfile import NamedTemporaryFile
 from flask import Flask, request
 from subprocess import run, PIPE
 
-def portscan_daemon(filename):
+def portscan_daemon(file):
   p = run(['nmap', '-A', '-sV', '--script=vulners/vulners.nse -p- -iL - -oX -'], stdin=file, stdout=PIPE)
   p.check_returncode()
   return p.stdout
@@ -12,11 +12,13 @@ def create_app():
 
   @app.route('/upload', methods=['PUT'])
   def upload():
+    file = NamedTemporaryFile()
     try:
-      file = NamedTemporaryFile()
       file.write(request.get_data())
       return portscan_daemon(file), 200
-    finally: file.delete()
+    finally:
+      file.close()
+      os.unlink(file.name)
 
   return app
 
