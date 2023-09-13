@@ -12,7 +12,7 @@ services:
     #healthcheck:
     ##  test: ["CMD-SHELL", "exec 3<> /dev/tcp/0.0.0.0/3633 ; cat <&3 ; exec 3<&-"]
     #  test: ["CMD-SHELL", "nslookup hackthebox.com 0.0.0.0"]
-    #  interval:      1m
+    #  interval:     10s
     #  timeout:       3s
     #  retries:       10
     depends_on:
