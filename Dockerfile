@@ -16,9 +16,8 @@ ENTRYPOINT [         \
   "/usr/bin/env",    \
   "python",          \
   "-m",              \
-  "import_db",       \
+  "import_db"        \
 ]
-  #"-f"               \
 
 EXPOSE 65432/tcp
 
