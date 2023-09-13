@@ -6,7 +6,7 @@ from os import unlink
 #def portscan_daemon(file):
 def portscan_daemon(hosts):
   # /usr/bin/env
-  p = run(['nmap', '-A', '-sV', '--script=vulners/vulners.nse', '-p-', '-iL', '-', '-oX', '-'], stdin=hosts, stdout=PIPE)
+  p = run(['nmap', '-A', '-sV', '--script=vulners/vulners.nse', '-p-', '-iL', '-', '-oX', '-'], stdin=hosts.encode(), stdout=PIPE)
   p.check_returncode()
   return p.stdout
 
