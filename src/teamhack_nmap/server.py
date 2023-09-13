@@ -12,9 +12,11 @@ def create_app(console):
 
   @app.route('/upload', methods=['PUT'])
   def upload():
-    with file as NamedTemporaryFile():
+    try:
+      file = NamedTemporaryFile()
       file.write(request.get_data())
       return portscan_daemon(file), 200
+    finally: file.delete()
 
   return app
 
