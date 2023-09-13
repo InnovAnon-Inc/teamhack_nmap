@@ -129,21 +129,21 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t "innovanon/import_db:$TEAMHACK_VERSION" .
+        docker build -t "innovanon/teamhack_nmap:$TEAMHACK_VERSION" .
       env:
         TEAMHACK_VERSION: ${{ steps.tag_version.outputs.new_tag }}
 
     - name: Tag Docker Image
       run: |
-        docker tag      "innovanon/import_db:$TEAMHACK_VERSION" \
-                         innovanon/import_db:latest
+        docker tag      "innovanon/teamhack_nmap:$TEAMHACK_VERSION" \
+                         innovanon/teamhack_nmap:latest
       env:
         TEAMHACK_VERSION: ${{ steps.tag_version.outputs.new_tag }}
 
 
     - name: Deploy Docker Image
       run: |
-        docker push      innovanon/import_db
+        docker push      innovanon/teamhack_nmap
 
     # Service containers to run with `container-job`
     services:

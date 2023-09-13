@@ -1,6 +1,6 @@
-# PG-backed DNS-Server
+# Dockerized REST API to run NMap
 simple dns server using python
-![example workflow](https://github.com/InnovAnon-Inc/import_db/actions/workflows/pkgrel.yml/badge.svg)
+![example workflow](https://github.com/InnovAnon-Inc/teamhack_nmap/actions/workflows/pkgrel.yml/badge.svg)
 
 ```sh
 requirements:
