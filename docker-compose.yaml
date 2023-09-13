@@ -1,28 +1,27 @@
 version: '3.8'
 services:
-  teamhack_dns:
-    image: innovanon/teamhack_dns
-    container_name:  teamhack_dns
+  import_db:
+    image: innovanon/import_db
+    container_name:  import_db
     ports:
-      - "0.0.0.0:53:53/udp"
+      - "0.0.0.0:65432:65432/tcp"
     volumes:
-      - teamhack-dns:/var/teamhack/etc:ro
+      #- import-db:/var/teamhack/etc:ro
       - syslog-client:/etc/rsyslog.d:ro
     restart:         always
+    command: ["-S", "-U", $USER, "-P", $PASSWORD]
     #network_mode:    service:vpn-s1
     #healthcheck:
     #  test: ["CMD-SHELL", "nslookup hackthebox.com 0.0.0.0"]
     #  interval:      1m
     #  timeout:       3s
     #  retries:       10
-    # TODO
-    depends_on:
-      postgres:
-        condition: service_started
-        #condition: service_healthy
-      syslog:
-        condition: service_started
+    #depends_on:
+    #  msfrpcd:
+    #    condition: service_started
+    #  syslog:
+    #    condition: service_started
 
-volumes:
-  teamhack-dns: # /database.ini
+#volumes:
+#  import-db:
 

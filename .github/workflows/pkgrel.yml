@@ -62,16 +62,6 @@ jobs:
         #pip install '.[test]'
         pip install coverage pytest
 
-    - name: DB
-      run: |
-        #sudo createuser  user
-        #sudo createdb -O user db
-        echo '[postgresql]'    >  etc/test_database.ini
-        echo host=localhost    >> etc/test_database.ini
-        echo database=postgres >> etc/test_database.ini
-        echo user=postgres     >> etc/test_database.ini
-        echo password=postgres >> etc/test_database.ini
-   
     # TODO write tests 
     #- name: Integration Test
     #  run: |
@@ -139,21 +129,21 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t "innovanon/teamhack_dns:$TEAMHACK_VERSION" .
+        docker build -t "innovanon/import_db:$TEAMHACK_VERSION" .
       env:
         TEAMHACK_VERSION: ${{ steps.tag_version.outputs.new_tag }}
 
     - name: Tag Docker Image
       run: |
-        docker tag      "innovanon/teamhack_dns:$TEAMHACK_VERSION" \
-                         innovanon/teamhack_dns:latest
+        docker tag      "innovanon/import_db:$TEAMHACK_VERSION" \
+                         innovanon/import_db:latest
       env:
         TEAMHACK_VERSION: ${{ steps.tag_version.outputs.new_tag }}
 
 
     - name: Deploy Docker Image
       run: |
-        docker push      innovanon/teamhack_dns
+        docker push      innovanon/import_db
 
     # Service containers to run with `container-job`
     services:

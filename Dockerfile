@@ -7,7 +7,7 @@ FROM python:latest
 #  /tmp/dist/*.whl    \
 #&& rm -frv           \
 #  /tmp/dist/
-RUN pip install teamhack_dns
+RUN pip install import_db
 
 WORKDIR  /var/teamhack
 VOLUME ["/var/teamhack"]
@@ -16,8 +16,9 @@ ENTRYPOINT [         \
   "/usr/bin/env",    \
   "python",          \
   "-m",              \
-  "teamhack_dns"     \
+  "import_db",       \
+  "-f"               \
 ]
 
-EXPOSE 53/udp
+EXPOSE 65432/tcp
 
