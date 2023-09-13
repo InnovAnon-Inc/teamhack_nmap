@@ -90,7 +90,7 @@ ENTRYPOINT [         \
   "/usr/bin/env",    \
   "python",          \
   "-m",              \
-  "teamhack_nmap"     \
+  "teamhack_nmap"    \
 ]
 
 EXPOSE 55432/tcp

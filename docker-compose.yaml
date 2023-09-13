@@ -1,8 +1,7 @@
 version: '3.8'
 services:
   nmap:
-    #image: innovanon/teamhack_nmap
-    build: .
+    image: innovanon/teamhack_nmap
     container_name:  teamhack_nmap
     ports:
       - "0.0.0.0:55432:55432/tcp"
