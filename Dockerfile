@@ -17,8 +17,8 @@ ENTRYPOINT [         \
   "python",          \
   "-m",              \
   "import_db",       \
-  "-f"               \
 ]
+  #"-f"               \
 
 EXPOSE 65432/tcp
 

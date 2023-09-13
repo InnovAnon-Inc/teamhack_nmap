@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   import_db:
+    env_file: .env
     image: innovanon/import_db
     container_name:  import_db
     ports:
@@ -9,7 +10,7 @@ services:
       #- import-db:/var/teamhack/etc:ro
       - syslog-client:/etc/rsyslog.d:ro
     restart:         always
-    command: ["-S", "-U", $USER, "-P", $PASSWORD]
+    #command: ["-S", "-U", $USER, "-P", $PASSWORD]
     #network_mode:    service:vpn-s1
     #healthcheck:
     #  test: ["CMD-SHELL", "nslookup hackthebox.com 0.0.0.0"]
