@@ -18,6 +18,7 @@ def create_app():
     try:
       file.write(request.get_data())
       file.flush()
+      file.seek(0)
       return portscan_daemon(file), 200
     finally:
       file.close()
