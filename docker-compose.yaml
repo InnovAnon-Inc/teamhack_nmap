@@ -17,11 +17,11 @@ services:
     #  interval:      1m
     #  timeout:       3s
     #  retries:       10
-    #depends_on:
-    #  msfrpcd:
-    #    condition: service_started
-    #  syslog:
-    #    condition: service_started
+    depends_on:
+      msfrpcd:
+        condition: service_started
+      syslog:
+        condition: service_started
 
 #volumes:
 #  import-db:
