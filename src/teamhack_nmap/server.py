@@ -27,7 +27,9 @@ def create_app():
     #finally:
     #  file.close()
     #  #unlink(file.name)
-    return portscan_daemon(request.get_data()), 200
+    data = request.get_data()
+    print(f'data: {data}')
+    return portscan_daemon(data), 200
 
   return app
 
