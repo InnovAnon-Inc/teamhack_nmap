@@ -1,15 +1,17 @@
 from tempfile import NamedTemporaryFile
 from flask import Flask, request
-from subprocess import run, PIPE
+from subprocess import run, PIPE, check_output
 from os import unlink
 
 #def portscan_daemon(file):
 def portscan_daemon(hosts):
   # /usr/bin/env
   #p = run(['nmap', '-A', '-sV', '--script=vulners/vulners.nse', '-p-', '-iL', '-', '-oX', '-'], stdin=file, stdout=PIPE)
-  p = run(['nmap', '-A', '-sV', '--script=vulners/vulners.nse', '-p-', '-iL', '-', '-oX', '-'], stdin=hosts.decode(), stdout=PIPE)
-  p.check_returncode()
-  return p.stdout
+  #p = run(['nmap', '-A', '-sV', '--script=vulners/vulners.nse', '-p-', '-iL', '-', '-oX', '-'], stdin=hosts.decode(), stdout=PIPE)
+  p = check_output(['nmap', '-A', '-sV', '--script=vulners/vulners.nse', '-p-', '-iL', '-', '-oX', '-'], input=hosts.decode())
+  #p.check_returncode()
+  #return p.stdout
+  return p
 
 def create_app():
   app = Flask(__name__)
