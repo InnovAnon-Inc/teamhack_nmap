@@ -7,7 +7,7 @@ def portscan_daemon(filename):
   p.check_returncode()
   return p.stdout
 
-def create_app(console):
+def create_app():
   app = Flask(__name__)
 
   @app.route('/upload', methods=['PUT'])
