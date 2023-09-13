@@ -3,9 +3,10 @@ from flask import Flask, request
 from subprocess import run, PIPE
 from os import unlink
 
-def portscan_daemon(file):
+#def portscan_daemon(file):
+def portscan_daemon(hosts):
   # /usr/bin/env
-  p = run(['nmap', '-A', '-sV', '--script=vulners/vulners.nse', '-p-', '-iL', '-', '-oX', '-'], stdin=file, stdout=PIPE)
+  p = run(['nmap', '-A', '-sV', '--script=vulners/vulners.nse', '-p-', '-iL', '-', '-oX', '-'], stdin=hosts, stdout=PIPE)
   p.check_returncode()
   return p.stdout
 
@@ -14,15 +15,16 @@ def create_app():
 
   @app.route('/upload', methods=['PUT'])
   def upload():
-    file = NamedTemporaryFile()
-    try:
-      file.write(request.get_data())
-      file.flush()
-      file.seek(0)
-      return portscan_daemon(file), 200
-    finally:
-      file.close()
-      #unlink(file.name)
+    #file = NamedTemporaryFile()
+    #try:
+    #  file.write(request.get_data())
+    #  file.flush()
+    #  file.seek(0)
+    #  return portscan_daemon(file), 200
+    #finally:
+    #  file.close()
+    #  #unlink(file.name)
+    return portscan_daemon(request.get_data()), 200
 
   return app
 
