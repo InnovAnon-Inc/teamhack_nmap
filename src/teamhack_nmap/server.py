@@ -20,7 +20,7 @@ def create_app():
       return portscan_daemon(file), 200
     finally:
       file.close()
-      unlink(file.name)
+      #unlink(file.name)
 
   return app
 
