@@ -62,7 +62,7 @@ RUN apt update                     \
     git                            \
     nmap                           \
     python3-pip                    \
-    python3-is-python              \
+    python-is-python3              \
     xinetd                         \
 &&  apt autoremove   -y            \
     --purge                        \
