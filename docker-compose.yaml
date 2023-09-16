@@ -5,8 +5,8 @@ services:
     container_name:  teamhack_nmap
     ports:
       - "0.0.0.0:55432:55432/tcp"
-    volumes:
-      - syslog-client:/etc/rsyslog.d:ro
+    #volumes:
+    #  - syslog-client:/etc/rsyslog.d:ro
     restart:         always
     #network_mode:    service:vpn-s1
     #healthcheck:
@@ -15,10 +15,13 @@ services:
     #  interval:     10s
     #  timeout:       3s
     #  retries:       10
-    depends_on:
-      #import_db:
-      #  condition: service_started
-      syslog:
-        condition: service_started
-        #condition:   service_healthy
+    #depends_on:
+    #  #import_db:
+    #  #  condition: service_started
+    #  syslog:
+    #    condition: service_started
+    #    #condition:   service_healthy
+    #networks:
+    #  network:
+    #    ipv4_address: 10.5.0.9
 
