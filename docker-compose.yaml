@@ -4,7 +4,7 @@ services:
     image: innovanon/teamhack_nmap
     container_name:  teamhack_nmap
     ports:
-      - "0.0.0.0:55432:0.0.0.0:55432/tcp"
+      - "0.0.0.0:55432:55432/tcp"
     volumes:
       - syslog-client:/etc/rsyslog.d:ro
     restart:         always
