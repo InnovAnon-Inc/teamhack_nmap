@@ -15,11 +15,11 @@ services:
     #  interval:     10s
     #  timeout:       3s
     #  retries:       10
-    #depends_on:
-    #  #import_db:
-    #  #  condition: service_started
-    #  syslog:
-    #    condition: service_started
+    depends_on:
+      import_db:
+        condition: service_started
+      syslog:
+        condition: service_started
     #    #condition:   service_healthy
     #networks:
     #  network:
