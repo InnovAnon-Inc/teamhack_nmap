@@ -29,7 +29,7 @@ def create_app():
     #  #unlink(file.name)
     data = request.get_data()
     print(f'data: {data}')
-    return portscan_daemon(data), 200
+    return portscan_daemon(data)#, 200
 
   return app
 
