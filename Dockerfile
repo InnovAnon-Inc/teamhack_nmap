@@ -2,22 +2,20 @@ FROM kalilinux/kali-rolling as build
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt update                     \
-&&  apt full-upgrade -y            \
-    --no-install-recommends        \
-&&  apt install      -y            \
-    --no-install-recommends        \
-    git                            \
-    nmap                           \
-    python3-pip                    \
-    python-is-python3              \
-    xinetd                         \
-&&  apt autoremove   -y            \
-    --purge                        \
-&&  apt clean        -y            \
-&&  rm -rf /var/lib/apt/lists/*
-
-RUN test -d /usr/share/nmap/scripts                \
+    #xinetd                                         \
+RUN apt update                                     \
+&&  apt full-upgrade -y                            \
+    --no-install-recommends                        \
+&&  apt install      -y                            \
+    --no-install-recommends                        \
+    git                                            \
+    nmap                                           \
+    python3-pip                                    \
+    python-is-python3                              \
+&&  apt autoremove   -y                            \
+    --purge                                        \
+&&  apt clean        -y                            \
+&&  rm -rf /var/lib/apt/lists/*                    \
 &&  git clone                                      \
     --depth=1                                      \
     --recursive                                    \
@@ -28,14 +26,13 @@ RUN test -d /usr/share/nmap/scripts                \
     --depth=1                                      \
     --recursive                                    \
     https://github.com/danielmiessler/SecLists.git \
-    /usr/share/seclists
-
-RUN pip install teamhack_nmap
+    /usr/share/seclists                            \
+&&  pip install teamhack_nmap                      \
+&&  test -x /usr/bin/env                           \
+&&  command -v python
 
 #RUN adduser --system msf-user
 
-RUN test -x /usr/bin/env
-RUN command -v python
 ENTRYPOINT [         \
   "/usr/bin/env",    \
   "python",          \
