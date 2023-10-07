@@ -10,9 +10,9 @@ services:
     restart:         always
     #network_mode:    service:vpn-s1
     healthcheck:
-      test: ["CMD-SHELL", "nmap", "-Pn", "-p", "55432", "0.0.0.0"]
-      interval:     90s
-      timeout:      30s
+      test: ["CMD-SHELL", "nmap -Pn -p 55432 0.0.0.0"]
+      interval:     30s
+      timeout:      10s
       retries:       10
     depends_on:
       import_db:
