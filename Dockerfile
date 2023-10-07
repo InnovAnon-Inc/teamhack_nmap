@@ -35,6 +35,7 @@ RUN pip install teamhack_nmap
 #RUN adduser --system msf-user
 
 RUN test -x /usr/bin/env
+RUN command -v python
 ENTRYPOINT [         \
   "/usr/bin/env",    \
   "python",          \
